@@ -9,7 +9,7 @@ const distPath = path.join(__dirname, '/build');
 
 const config = {
   entry: {
-    main: ['./src/js/index.js', '.src/sass/styles.scss']
+    main: './src/js/index.js'
   },
   output: {
     filename: 'bundle.js',
@@ -22,9 +22,18 @@ const config = {
     }, {
       test: /\.js$/,
       exclude: /node_modules/,
-      use: [{
-        loader: 'babel-loader'
-      }]
+      use: [
+        { 
+          loader: "babel-loader",
+          options: {
+          presets: ["@babel/preset-env"]
+          },
+        }, 'eslint-loader'
+      ]
+    },
+    {
+      test: /\.ts$/,
+      loader: "ts-loader"
     }, {
       test: /\.scss$/,
       exclude: /node_modules/,
@@ -37,6 +46,9 @@ const config = {
         'sass-loader'
       ]
     },]
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -60,7 +72,8 @@ const config = {
     contentBase: distPath,
     port: 9000,
     compress: true,
-    open: true
+    open: true,
+    hot: true
   }
 };
 

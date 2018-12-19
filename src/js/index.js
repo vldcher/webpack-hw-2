@@ -1,12 +1,12 @@
-import 'babel-polyfill';
 
-import './../sass/styles.scss';
+import './tsfile';
+import './styles.scss';
 
-const getHeader = () => {
+var getHeader = () => {
 
-  const element = document.createElement('h1');
+  const element = document.createElement('p');
 
-  element.innerHTML = helloWebpack;
+  element.innerHTML = 'hello Webpack';
 
   return element;
 };
