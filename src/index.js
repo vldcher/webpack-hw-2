@@ -1,8 +1,7 @@
 
 import './tsfile';
-import './styles.scss';
 
-var getHeader = () => {
+const getHeader = () => {
 
   const element = document.createElement('p');
 
