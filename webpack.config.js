@@ -6,14 +6,15 @@ const distPath = path.join(__dirname, '/build');
 
 module.exports = {
   entry: {
-    main: './src/index.js',
-    styles: './src/styles.scss',
+    'main': './src/index.js',
+    'visitor/': './src/visitor/visitor.js',
+    'admin/': './src/admin/admin.js'
   },
 
   output: {
-    filename: 'bundle.js',
-    path: distPath
-  },
+    path: distPath,
+    filename: '[name].bundle.js'
+},
 
   module: {
     rules: [
@@ -52,11 +53,30 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js']
   },
+  optimization: {
+    splitChunks: {
+        chunks: 'all',
+        name: 'common'
+    }
+ },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('styles.css'),
+    new HtmlWebpackPlugin({
+        chunks: ['common', 'main']
+    }),
+    new HtmlWebpackPlugin({
+        filename: 'admin/admin.html',
+        template: 'src/admin/admin.html',
+        chunks: ['common', 'admin/']
+    }),
+    new HtmlWebpackPlugin({
+        filename: 'visitor/visitor.html',
+        template: 'src/visitor/visitor.html',
+        chunks: ['common', 'visitor/']
+    }),
   ],
 
   devServer: {
