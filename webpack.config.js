@@ -60,13 +60,7 @@ module.exports = {
     }
  },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: './src/index.html'
-    // }),
     new ExtractTextPlugin('styles.css'),
-    new HtmlWebpackPlugin({
-        chunks: ['common', 'main']
-    }),
     new HtmlWebpackPlugin({
         filename: 'admin.html',
         template: 'src/admin.html',
