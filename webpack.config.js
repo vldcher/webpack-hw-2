@@ -7,8 +7,8 @@ const distPath = path.join(__dirname, '/build');
 module.exports = {
   entry: {
     'main': './src/index.js',
-    'visitor/': './src/visitor/visitor.js',
-    'admin/': './src/admin/admin.js'
+    'visitor/': './src/visitor.js',
+    'admin/': './src/admin.js'
   },
 
   output: {
@@ -27,20 +27,20 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           { 
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-            presets: ["@babel/preset-env"]
+            presets: ['@babel/preset-env']
             },
           }, 'eslint-loader'
         ]
       },
       {
         test: /\.ts$/,
-        loader: "ts-loader"
+        loader: 'ts-loader'
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "postcss-loader")
+        loader: ExtractTextPlugin.extract('style-loader', 'postcss-loader')
       },
       {
         test: /\.scss$/,
@@ -60,21 +60,21 @@ module.exports = {
     }
  },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: './src/index.html'
+    // }),
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
         chunks: ['common', 'main']
     }),
     new HtmlWebpackPlugin({
-        filename: 'admin/admin.html',
-        template: 'src/admin/admin.html',
+        filename: 'admin.html',
+        template: 'src/admin.html',
         chunks: ['common', 'admin/']
     }),
     new HtmlWebpackPlugin({
-        filename: 'visitor/visitor.html',
-        template: 'src/visitor/visitor.html',
+        filename: 'visitor.html',
+        template: 'src/visitor.html',
         chunks: ['common', 'visitor/']
     }),
   ],
