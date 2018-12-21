@@ -7,8 +7,8 @@ const distPath = path.join(__dirname, '/build');
 module.exports = {
   entry: {
     'main': './src/index.js',
-    'visitor/': './src/visitor.js',
-    'admin/': './src/admin.js'
+    'visitor': './src/visitor.js',
+    'admin': './src/admin.js'
   },
 
   output: {
@@ -60,16 +60,19 @@ module.exports = {
     }
  },
   plugins: [
+
     new ExtractTextPlugin('styles.css'),
+
     new HtmlWebpackPlugin({
         filename: 'admin.html',
         template: 'src/admin.html',
-        chunks: ['common', 'admin/']
+        chunks: ['common', 'admin', 'main'],
     }),
+    
     new HtmlWebpackPlugin({
         filename: 'visitor.html',
         template: 'src/visitor.html',
-        chunks: ['common', 'visitor/']
+        chunks: ['common', 'visitor', 'main'],
     }),
   ],
 
