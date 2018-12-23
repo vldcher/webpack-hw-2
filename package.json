@@ -48,7 +48,9 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "loader-utils": "^1.1.0",
+    "lodash": "^4.17.11",
     "postcss": "^7.0.0",
-    "postcss-load-config": "^2.0.0"
+    "postcss-load-config": "^2.0.0",
+    "rxjs": "^6.3.3"
   }
 }
