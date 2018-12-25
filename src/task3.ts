@@ -1,10 +1,11 @@
 import { Observable, of } from 'rxjs';
 
+//input data
 const inputString = of('abcdefg q sf kkk');
 
 const filterString = 'ace b kk';
 
-const qwe = (filterString) => (source: Observable<any>) =>
+const myFilter = (filterString) => (source: Observable<any>) =>
   new Observable(observer => {
     return source.subscribe({
       next(inputString) {
@@ -30,7 +31,7 @@ const qwe = (filterString) => (source: Observable<any>) =>
   });
 
   inputString
-    .pipe(qwe(filterString)).subscribe(console.log);
+    .pipe(myFilter(filterString)).subscribe(console.log);
 
 
 

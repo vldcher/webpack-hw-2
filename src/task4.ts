@@ -1,15 +1,40 @@
-import { Observable, from } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-// Long Version
-// const pow = (n: number) => (source: Observable<any>) =>
-//   new Observable(observer => {
-//     return source.subscribe({
-//       next(x) {
-//         observer.next(
+//input data
+const inputString = of('AbcdEFGGG');
 
-//         );
-//       },
-//       error(err) { observer.error(err); },
-//       complete() { observer.complete(); }
-//     });
-//   });
+const switchCases = () => (source: Observable<any>) =>
+  new Observable(observer => {
+    return source.subscribe({
+      next(inputString:string) {
+
+        let i = 0;
+        let character = '';
+        let reverseCaseArray = [];
+        while (i <= inputString.length - 1){
+            character = inputString.charAt(i);
+
+                if (character == character.toUpperCase()) {
+                    let changeCase = character.toLowerCase();
+                    reverseCaseArray.push(changeCase);
+                    
+                } else {
+                    let changeCase = character.toUpperCase();
+                    reverseCaseArray.push(changeCase);
+                }
+            i++;
+        }
+
+        const finalResultString = reverseCaseArray.toString().trim();
+
+        observer.next(
+            finalResultString
+        );
+      },
+      error(err) { observer.error(err); },
+      complete() { observer.complete(); }
+    });
+  });
+
+  inputString
+    .pipe(switchCases()).subscribe(console.log);
