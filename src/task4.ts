@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 
 //input data
-const inputString = of('AbcdEFGGG');
+// const inputString = of('AbcdEFGGG');
 
 const switchCases = () => (source: Observable<any>) =>
   new Observable(observer => {
@@ -25,7 +25,7 @@ const switchCases = () => (source: Observable<any>) =>
             i++;
         }
 
-        const finalResultString = reverseCaseArray.toString().trim();
+        const finalResultString = reverseCaseArray.toString();
 
         observer.next(
             finalResultString
@@ -36,5 +36,7 @@ const switchCases = () => (source: Observable<any>) =>
     });
   });
 
-  inputString
-    .pipe(switchCases()).subscribe(console.log);
+//   inputString
+//     .pipe(switchCases()).subscribe(console.log);
+
+    export { switchCases };

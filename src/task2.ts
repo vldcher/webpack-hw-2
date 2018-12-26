@@ -1,5 +1,5 @@
-import { map, share, switchMap } from 'rxjs/operators';
-import { Observable, pipe, interval, defer, from, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { interval, of } from 'rxjs';
 
 // random string
 // const randomSymbol = from(Math.random().toString(36).substr(2, 1));

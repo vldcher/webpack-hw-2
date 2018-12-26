@@ -1,7 +1,8 @@
-import { Observable, of } from 'rxjs';
+import { Observable, of, from } from 'rxjs';
+import { switchCases } from './task4';
 
 //input data
-const inputString = of('abcdefg q sf kkk');
+const inputString = of('aBcdeFg  Sf kkk');
 
 const filterString = 'ace b kk';
 
@@ -31,7 +32,7 @@ const myFilter = (filterString) => (source: Observable<any>) =>
   });
 
   inputString
-    .pipe(myFilter(filterString)).subscribe(console.log);
+    .pipe(myFilter(filterString), switchCases()).subscribe(console.log);
 
 
 
