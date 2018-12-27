@@ -2,9 +2,9 @@ import { Observable, of, from } from 'rxjs';
 import { switchCases } from './task4';
 
 //input data
-const inputString = of('aBcdeFg  Sf kkk');
+const inputString = of('aBcd eF gS f kkk');
 
-const filterString = 'ace b kk';
+const filterString = 'ace b k k';
 
 const myFilter = (filterString) => (source: Observable<any>) =>
   new Observable(observer => {
@@ -20,7 +20,8 @@ const myFilter = (filterString) => (source: Observable<any>) =>
                     filteredArray.push(initArray[i]);
                 }
             }
-            const finalResultString = filteredArray.toString();
+            const finalResultString = filteredArray.join('');
+            console.log(finalResultString);
 
         observer.next(
             finalResultString

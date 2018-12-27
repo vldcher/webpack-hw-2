@@ -11,21 +11,22 @@ const switchCases = () => (source: Observable<any>) =>
         let i = 0;
         let character = '';
         let reverseCaseArray = [];
-        while (i <= inputString.length - 1){
+
+        for (i = 0; i <= inputString.length - 1; i++) {
+
             character = inputString.charAt(i);
 
-                if (character == character.toUpperCase()) {
-                    let changeCase = character.toLowerCase();
-                    reverseCaseArray.push(changeCase);
-                    
-                } else {
-                    let changeCase = character.toUpperCase();
-                    reverseCaseArray.push(changeCase);
-                }
-            i++;
+            if (character == character.toUpperCase()) {
+                let changeCase = character.toLowerCase();
+                reverseCaseArray.push(changeCase);
+                
+            } else {
+                let changeCase = character.toUpperCase();
+                reverseCaseArray.push(changeCase);
+            }
         }
-
-        const finalResultString = reverseCaseArray.toString();
+        console.log(reverseCaseArray);
+        const finalResultString = reverseCaseArray.join('');
 
         observer.next(
             finalResultString
