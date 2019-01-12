@@ -1,19 +1,22 @@
-import { switchMap } from 'rxjs/operators';
-import { interval, of } from 'rxjs';
+const testObject = [
+  { text: 'film1', duration: 10 },
+  { text: 'film2', duration: 20 },
+  { text: 'film3', duration: 30 },
+  { text: 'film4', duration: 40 },
+]
 
-// random string
-// const randomSymbol = from(Math.random().toString(36).substr(2, 1));
+function reduce(items, projectionFunction, accumulator) {
+  let result = accumulator;
+  items.forEach(item => {
+   result = projectionFunction(item, result);
+  });
+  return result;
+}
 
-// Long Version
+function addDuration(item, accumulator) {
+  return item.duration + accumulator;
+}
 
-const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+const reduceResult = reduce(testObject, addDuration, 0);
 
-let source = interval(1000);
-
-let makeRandomSymbols = source.pipe(
-  switchMap(
-    () => of(possible.charAt(Math.floor(Math.random() * possible.length)))
-  )
-);
-
-makeRandomSymbols.subscribe(val => console.log(val));
+console.log(reduceResult); //100

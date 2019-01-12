@@ -51,6 +51,7 @@
     "lodash": "^4.17.11",
     "postcss": "^7.0.0",
     "postcss-load-config": "^2.0.0",
+    "ramda": "^0.26.1",
     "rxjs": "^6.3.3"
   }
 }
